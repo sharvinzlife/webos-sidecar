@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>webOS Sidecar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Orbitron:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/static/favicon.svg?v=20260322f" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css?v=20260322f" />
+    <script defer src="/static/app.js?v=20260322f"></script>
+  </head>
+  <body>
+    <canvas id="confetti-canvas"></canvas>
+    <div class="backdrop-glow glow-a"></div>
+    <div class="backdrop-glow glow-b"></div>
+    <div class="noise"></div>
+    <div class="scanlines"></div>
+
+    <div class="emoji-float emoji-a">📺</div>
+    <div class="emoji-float emoji-b">⚡</div>
+    <div class="emoji-float emoji-c">🚀</div>
+    <div class="emoji-float emoji-d">🎉</div>
+
+    <main class="shell">
+      <section class="panel hero-panel">
+        <div class="eyebrow">Official LG CLI wrapper • local-only dashboard • port 9922 magic</div>
+        <h1 class="glitch-title" data-text="webOS Sidecar">webOS Sidecar</h1>
+        <p class="hero-copy">
+          One command bootstraps Python + webOS CLI dependencies, opens this dashboard, and walks you from LG Developer Mode to verified
+          TV install.
+        </p>
+        <p class="hero-microcopy">
+          Paste a GitHub org, repo, releases page, or direct <strong>.ipk</strong>. The resolver now understands Moonfin-style org pages,
+          Litefin’s multi-build releases, and generic app repos that ship LG webOS packages.
+        </p>
+        <div class="hero-actions">
+          <a class="hero-link" href="#device-panel">🔐 Link TV</a>
+          <a class="hero-link" href="#upload-panel">📦 Load Package</a>
+          <a class="hero-link" href="#install-panel">🚀 Verify Install</a>
+        </div>
+        <div class="pill-row" id="status-pills"></div>
+      </section>
+
+      <section class="grid two-up">
+        <article class="panel">
+          <div class="section-kicker">LG setup</div>
+          <h2>How to turn Developer Mode on, clearly</h2>
+          <div class="guide-steps">
+            <div class="guide-step">
+              <div class="guide-number">1</div>
+              <div class="guide-copy">
+                <strong>On the TV remote, press Home and open LG Content Store.</strong>
+                <p>Search exactly for <strong>Developer Mode</strong> and install that app.</p>
+              </div>
+            </div>
+            <div class="guide-step">
+              <div class="guide-number">2</div>
+              <div class="guide-copy">
+                <strong>Open the Developer Mode app and sign in.</strong>
+                <p>Use your <strong>LG Developer site account</strong>, not just a normal TV profile.</p>
+              </div>
+            </div>
+            <div class="guide-step">
+              <div class="guide-number">3</div>
+              <div class="guide-copy">
+                <strong>Switch <code>Dev Mode Status</code> to ON.</strong>
+                <p>The TV will reboot. That part is expected.</p>
+              </div>
+            </div>
+            <div class="guide-step">
+              <div class="guide-number">4</div>
+              <div class="guide-copy">
+                <strong>Open Developer Mode again after the reboot.</strong>
+                <p>Now press <strong>Key Server</strong>. The app shows a <strong>6-character passphrase</strong> at the bottom-left.</p>
+              </div>
+            </div>
+            <div class="guide-step">
+              <div class="guide-number">5</div>
+              <div class="guide-copy">
+                <strong>Come back here and add the TV connection.</strong>
+                <p>Use your TV IP, port <code>9922</code>, username <code>prisoner</code>, and leave the password empty.</p>
+              </div>
+            </div>
+            <div class="guide-step">
+              <div class="guide-number">6</div>
+              <div class="guide-copy">
+                <strong>Keep Developer Mode alive.</strong>
+                <p>Watch the remaining session time and hit <strong>EXTEND</strong> before it reaches zero, or LG removes your sideloaded apps.</p>
+              </div>
+            </div>
+          </div>
+          <div class="guide-callout">
+            <strong>Quick rule</strong>
+            <p>Your computer and TV must be on the same network. If Developer Mode expires, the apps you sideloaded disappear from the TV.</p>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="section-kicker">Paste the right link</div>
+          <h2>Make the asset finder actually useful</h2>
+          <ul class="note-list">
+            <li><strong>Works:</strong> a direct <code>.ipk</code> URL, a GitHub repo, a releases page, or a GitHub org/user page.</li>
+            <li><strong>Moonfin example:</strong> pasting <code>https://github.com/Moonfin-Client</code> scans its repos and surfaces the <strong>Smart-TV</strong> webOS release.</li>
+            <li><strong>Litefin example:</strong> the dashboard understands <code>https://github.com/MoazSalem/litefin/releases</code> and will show the webOS <code>.ipk</code> variants instead of the Tizen <code>.wgt</code> files.</li>
+            <li><strong>Best input:</strong> use the exact platform repo or releases page when you know it, like the project’s Smart-TV/webOS repo.</li>
+            <li><strong>Still wrong for LG:</strong> source zips, APKs, or Samsung <code>.wgt</code> files.</li>
+          </ul>
+          <div class="warning-box">
+            <strong>LG reminder:</strong> install <code>.ipk</code> on LG webOS. If you see <code>.wgt</code>, that is the Samsung/Tizen package instead.
+          </div>
+          <p class="micro-note">
+            The resolver checks GitHub live and explains what it found instead of just leaving the panel blank.
+          </p>
+        </article>
+      </section>
+
+      <section class="grid two-up">
+        <article class="panel" id="device-panel">
+          <div class="section-kicker">Step 1</div>
+          <h2>Save your TV</h2>
+          <form id="device-form" class="stack-form">
+            <label>
+              TV name
+              <input type="text" name="name" value="living-room-tv" autocomplete="off" required />
+            </label>
+            <label>
+              TV IP
+              <input type="text" name="host" placeholder="192.168.1.77" autocomplete="off" required />
+            </label>
+            <label>
+              Port
+              <input type="number" name="port" value="9922" required />
+            </label>
+            <label>
+              SSH user
+              <input type="text" name="username" value="prisoner" autocomplete="username" required />
+            </label>
+            <label>
+              Description
+              <input type="text" name="description" value="Sharvin's LG TV" autocomplete="off" />
+            </label>
+            <label class="toggle">
+              <input type="checkbox" name="set_default" checked />
+              Make this the default TV
+            </label>
+            <button type="submit">💾 Save TV</button>
+          </form>
+          <div id="device-list" class="card-list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="section-kicker">Step 2</div>
+          <h2>Grab the SSH key</h2>
+          <form id="key-form" class="stack-form">
+            <label>
+              Target TV
+              <select id="key-device-select" name="device_name"></select>
+            </label>
+            <label>
+              6-character passphrase
+              <input type="password" name="passphrase" placeholder="TV code, exact caps" autocomplete="one-time-code" required />
+            </label>
+            <button type="submit">🔑 Link with Key Server</button>
+          </form>
+          <p class="micro-note">
+            If you get an auth failure, keep the TV on the Developer Mode screen with <strong>Key Server</strong> open, then retry. The
+            full CLI log for this step appears below instead of only in the toast.
+          </p>
+          <p class="micro-note">LG Key Server codes are case-sensitive. This dashboard now normalizes them to uppercase before saving.</p>
+          <div id="system-info" class="info-grid"></div>
+          <div id="key-output" class="step-feed"></div>
+        </article>
+      </section>
+
+      <section class="grid two-up">
+        <article class="panel">
+          <div class="section-kicker">Step 3A</div>
+          <h2>Resolve a GitHub release</h2>
+          <form id="source-form" class="stack-form">
+            <label>
+              GitHub repo, release page, or direct <code>.ipk</code> URL
+              <input
+                type="text"
+                name="source"
+                autocomplete="off"
+                placeholder="Moonfin, Litefin, or direct webOS release asset"
+                value="https://github.com/Moonfin-Client"
+                required
+              />
+            </label>
+            <button type="submit">🛰️ Find installable assets</button>
+            <div class="source-presets">
+              <button type="button" class="secondary source-preset" data-action="preset-source" data-source="https://github.com/Moonfin-Client">
+                🔎 Scan Moonfin org
+              </button>
+              <button
+                type="button"
+                class="secondary source-preset"
+                data-action="preset-source"
+                data-source="https://github.com/Moonfin-Client/Smart-TV/releases"
+              >
+                📺 Moonfin Smart-TV releases
+              </button>
+              <button type="button" class="secondary source-preset" data-action="preset-source" data-source="https://github.com/MoazSalem/litefin/releases">
+                💡 Litefin releases
+              </button>
+              <button type="button" class="secondary source-preset" data-action="preset-source" data-source="https://github.com/MoazSalem/litefin">
+                🧊 Litefin repo
+              </button>
+            </div>
+            <p class="micro-note">
+              Tip: org pages like <code>Moonfin-Client</code> and release repos like <code>MoazSalem/litefin</code> now resolve to the real LG
+              <code>.ipk</code> assets instead of leaving you to guess.
+            </p>
+          </form>
+          <div class="app-catalog">
+            <button type="button" class="app-pick" data-action="preset-source" data-source="https://github.com/Moonfin-Client/Smart-TV/releases">
+              <strong>Moonfin</strong>
+              <span>Jellyfin client with a dedicated Smart-TV webOS release.</span>
+            </button>
+            <button type="button" class="app-pick" data-action="preset-source" data-source="https://github.com/MoazSalem/litefin/releases">
+              <strong>Litefin</strong>
+              <span>Multi-build webOS release with es6, legacy, and ultra-legacy .ipk options.</span>
+            </button>
+            <button type="button" class="app-pick" data-action="focus-source">
+              <strong>Any repo</strong>
+              <span>Paste a GitHub repo, releases page, org page, or direct LG .ipk URL.</span>
+            </button>
+          </div>
+          <div id="release-results" class="card-list"></div>
+        </article>
+
+        <article class="panel" id="upload-panel">
+          <div class="section-kicker">Step 3B</div>
+          <h2>Drop a package</h2>
+          <form id="upload-form" class="stack-form">
+            <label class="dropzone" id="dropzone">
+              <input id="upload-input" type="file" name="file" accept=".ipk,.zip,.wgt" hidden />
+              <span class="dropzone-icon">📦</span>
+              <span class="dropzone-title">Drag and drop an .ipk or .zip</span>
+              <span class="dropzone-subtitle">A .wgt will trigger a friendly “wrong format” stop sign.</span>
+            </label>
+            <button type="button" id="pick-file-button">✨ Pick a file</button>
+          </form>
+          <div id="artifact-list" class="card-list"></div>
+        </article>
+      </section>
+
+      <section class="grid two-up">
+        <article class="panel" id="install-panel">
+          <div class="section-kicker">Step 4</div>
+          <h2>Install and verify</h2>
+          <form id="install-form" class="stack-form">
+            <label>
+              Target TV
+              <select id="install-device-select" name="device_name"></select>
+            </label>
+            <label>
+              Package
+              <select id="artifact-select" name="artifact_id"></select>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" name="launch_after_install" checked />
+              Launch app after install if verification passes
+            </label>
+            <button type="submit">🚀 Install to TV</button>
+          </form>
+          <div id="install-output" class="step-feed"></div>
+        </article>
+
+        <article class="panel">
+          <div class="section-kicker">Troubleshoot fast</div>
+          <h2>Same error, same behavior, same fix path</h2>
+          <div id="troubleshooting" class="troubleshoot-list"></div>
+        </article>
+      </section>
+
+      <section class="grid two-up">
+        <article class="panel">
+          <div class="section-kicker">Activity</div>
+          <h2>Recent moves</h2>
+          <div id="activity-log" class="timeline"></div>
+        </article>
+
+        <article class="panel">
+          <div class="section-kicker">Why this exists</div>
+          <h2>Minimal commands, maximum clarity</h2>
+          <p>
+            The repo is intentionally tiny: Python serves the dashboard, wraps the official LG CLI, and stores your recent packages
+            locally. One command starts the whole thing.
+          </p>
+          <pre class="command-block">./launch.sh</pre>
+          <p class="micro-note">
+            First run creates a venv, installs Python dependencies, installs <code>@webos-tools/cli</code>, validates that the local
+            server answers, and opens <code>http://127.0.0.1:3847</code> automatically.
+          </p>
+        </article>
+      </section>
+
+      <footer class="panel footer-panel">
+        <div>
+          <div class="section-kicker">Created with love by Sharvinzlife</div>
+          <h2>webOS Sidecar by Sharvinzlife • neon install flow with RGB chaos and TV-launch confetti ✨🌈⚡</h2>
+        </div>
+        <nav class="social-row">
+          <a href="https://x.com/sharvinzlife" target="_blank" rel="noreferrer">x.com/sharvinzlife</a>
+          <a href="https://instagram.com/sharvininzlife" target="_blank" rel="noreferrer">instagram.com/sharvininzlife</a>
+          <a href="https://fb.com/sharvinzlife" target="_blank" rel="noreferrer">fb.com/sharvinzlife</a>
+          <a href="https://github.com/sharvinzlife" target="_blank" rel="noreferrer">github.com/sharvinzlife</a>
+        </nav>
+      </footer>
+    </main>
+
+    <div id="toast" class="toast"></div>
+  </body>
+</html>

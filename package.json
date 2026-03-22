@@ -1,0 +1,13 @@
+{
+  "name": "webos-sidecar",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Local LG webOS sideload dashboard powered by the official webOS CLI",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20 <26"
+  },
+  "dependencies": {
+    "@webos-tools/cli": "^3.2.2"
+  }
+}

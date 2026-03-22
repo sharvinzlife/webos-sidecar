@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 320" role="img" aria-label="webOS Sidecar logo">
+  <defs>
+    <linearGradient id="frame" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#57f6ff" />
+      <stop offset="48%" stop-color="#c4ff3d" />
+      <stop offset="100%" stop-color="#ff445f" />
+    </linearGradient>
+    <linearGradient id="screen" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f2235" />
+      <stop offset="100%" stop-color="#08101a" />
+    </linearGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#57f6ff" flood-opacity="0.18" />
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <rect x="10" y="10" width="1020" height="300" rx="44" fill="#05070c" />
+  <rect x="10" y="10" width="1020" height="300" rx="44" fill="none" stroke="url(#frame)" stroke-width="2" opacity="0.4" />
+  <path d="M56 40c96 24 172 18 252-6" fill="none" stroke="#57f6ff" stroke-linecap="round" stroke-opacity="0.22" stroke-width="4" />
+  <path d="M854 276c66-10 114-34 146-72" fill="none" stroke="#ff445f" stroke-linecap="round" stroke-opacity="0.2" stroke-width="4" />
+
+  <g filter="url(#softGlow)">
+    <rect x="64" y="72" width="240" height="150" rx="30" fill="url(#screen)" stroke="url(#frame)" stroke-width="6" />
+    <path d="M106 245h156" fill="none" stroke="#f2f5f7" stroke-linecap="round" stroke-width="10" />
+    <path d="M140 260h88" fill="none" stroke="#f2f5f7" stroke-linecap="round" stroke-width="10" />
+    <path d="M118 118h96" fill="none" stroke="#57f6ff" stroke-linecap="round" stroke-width="10" />
+    <path d="M118 152h68" fill="none" stroke="#c4ff3d" stroke-linecap="round" stroke-width="10" />
+    <path d="M178 104c44 10 78 34 103 77" fill="none" stroke="#ff445f" stroke-linecap="round" stroke-width="8" />
+    <path d="M252 104l28 9-18 21-18-3-9-18z" fill="#c4ff3d" stroke="#f2f5f7" stroke-linejoin="round" stroke-width="4" />
+    <circle cx="277" cy="92" r="8" fill="#57f6ff" />
+    <circle cx="294" cy="138" r="6" fill="#ff445f" />
+    <circle cx="228" cy="86" r="4" fill="#f2f5f7" />
+  </g>
+
+  <g transform="translate(350 88)">
+    <text x="0" y="78" fill="#f7fbff" font-family="Orbitron, 'Segoe UI', sans-serif" font-size="90" font-weight="800" letter-spacing="3">webOS</text>
+    <text x="0" y="164" fill="url(#frame)" font-family="Orbitron, 'Segoe UI', sans-serif" font-size="90" font-weight="800" letter-spacing="3">Sidecar</text>
+    <text x="4" y="214" fill="#c6d6df" font-family="'Chakra Petch', 'Segoe UI', sans-serif" font-size="28" font-weight="600">TV apps in orbit  📺  🚀  ⚡</text>
+  </g>
+</svg>

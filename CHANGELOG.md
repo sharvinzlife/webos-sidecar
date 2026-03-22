@@ -2,6 +2,20 @@
 
 All notable changes to `webOS Sidecar` will be documented here.
 
+## Unreleased
+
+### Added
+
+- cross-platform launcher entrypoints for macOS, Linux, Windows PowerShell, and Windows Command Prompt
+- shared `launch.py` bootstrap so every platform uses the same validation and browser-open flow
+- new `webOS Sidecar` SVG logo and refreshed favicon
+- README badges and emoji-marked quickstart sections for platforms and the stack
+
+### Changed
+
+- updated the dashboard and README with platform-specific quickstart guidance
+- added a validation-only launcher mode via `python launch.py --check`
+
 ## v0.2.0 - 2026-03-22
 
 ### Added

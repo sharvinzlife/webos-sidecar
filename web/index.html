@@ -10,9 +10,9 @@
       href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Orbitron:wght@700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="/static/favicon.svg?v=20260322f" type="image/svg+xml" />
-    <link rel="stylesheet" href="/static/styles.css?v=20260322f" />
-    <script defer src="/static/app.js?v=20260322f"></script>
+    <link rel="icon" href="/static/favicon.svg?v=20260322g" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css?v=20260322g" />
+    <script defer src="/static/app.js?v=20260322g"></script>
   </head>
   <body>
     <canvas id="confetti-canvas"></canvas>
@@ -29,7 +29,8 @@
     <main class="shell">
       <section class="panel hero-panel">
         <div class="eyebrow">Official LG CLI wrapper • local-only dashboard • port 9922 magic</div>
-        <h1 class="glitch-title" data-text="webOS Sidecar">webOS Sidecar</h1>
+        <img class="hero-logo" src="/static/sidecar-logo.svg?v=20260322g" alt="webOS Sidecar neon logo" />
+        <h1 class="sr-only">webOS Sidecar</h1>
         <p class="hero-copy">
           One command bootstraps Python + webOS CLI dependencies, opens this dashboard, and walks you from LG Developer Mode to verified
           TV install.
@@ -289,15 +290,32 @@
 
         <article class="panel">
           <div class="section-kicker">Why this exists</div>
-          <h2>Minimal commands, maximum clarity</h2>
+          <h2>Minimal commands, maximum clarity, every OS</h2>
           <p>
             The repo is intentionally tiny: Python serves the dashboard, wraps the official LG CLI, and stores your recent packages
-            locally. One command starts the whole thing.
+            locally. Pick your platform button, run once, and the same bootstrap path handles the rest. ✨
           </p>
-          <pre class="command-block">./launch.sh</pre>
+          <div class="platform-grid">
+            <article class="platform-card">
+              <strong>macOS 🍎</strong>
+              <code>./launch.sh</code>
+              <span>Launch from Terminal with the Unix wrapper.</span>
+            </article>
+            <article class="platform-card">
+              <strong>Linux 🐧</strong>
+              <code>./launch.sh</code>
+              <span>Same path as macOS, including the Node shim and dependency checks.</span>
+            </article>
+            <article class="platform-card">
+              <strong>Windows 🪟</strong>
+              <code>launch.cmd</code>
+              <span>Run from Command Prompt or double-click it. PowerShell also works with <code>.\launch.ps1</code>.</span>
+            </article>
+          </div>
+          <pre class="command-block">python launch.py --check</pre>
           <p class="micro-note">
-            First run creates a venv, installs Python dependencies, installs <code>@webos-tools/cli</code>, validates that the local
-            server answers, and opens <code>http://127.0.0.1:3847</code> automatically.
+            The shared launcher creates a venv, installs Python dependencies, installs <code>@webos-tools/cli</code>, injects the Node
+            compatibility shim, validates startup, and opens <code>http://127.0.0.1:3847</code> automatically.
           </p>
         </article>
       </section>

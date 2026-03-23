@@ -18,6 +18,13 @@
   <img alt="License" src="https://img.shields.io/badge/License-MIT-14324a?style=for-the-badge" />
 </p>
 
+<p>
+  <a href="https://github.com/sharvinzlife/webos-sidecar"><img alt="Open repo" src="https://img.shields.io/badge/🌐-Open_Repo-1e293b?style=for-the-badge" /></a>
+  <a href="https://github.com/sharvinzlife/webos-sidecar/archive/refs/heads/main.zip"><img alt="Download zip" src="https://img.shields.io/badge/⬇️-Download_ZIP-1e293b?style=for-the-badge" /></a>
+  <a href="https://github.com/sharvinzlife/webos-sidecar/releases"><img alt="Releases" src="https://img.shields.io/badge/🧾-Releases-1e293b?style=for-the-badge" /></a>
+  <a href="https://webostv.developer.lge.com/develop/getting-started/developer-mode-app"><img alt="LG docs" src="https://img.shields.io/badge/📚-LG_Developer_Docs-1e293b?style=for-the-badge" /></a>
+</p>
+
 `webOS Sidecar` is a local-first LG webOS sideload dashboard by Sharvinzlife. It wraps the official LG CLI, removes the annoying command juggling, and gives you a cleaner install path for apps like Moonfin, Litefin, and other repos that publish LG `.ipk` releases.
 
 ## Why this exists
@@ -59,6 +66,22 @@ First run will:
 5. wait for the dashboard to answer on `http://127.0.0.1:3847`
 6. open the app in your browser automatically
 
+## ⬇️ Get the repo first
+
+### Option A: Git clone
+
+```bash
+git clone https://github.com/sharvinzlife/webos-sidecar.git
+cd webos-sidecar
+```
+
+### Option B: Download ZIP
+
+1. open [github.com/sharvinzlife/webos-sidecar](https://github.com/sharvinzlife/webos-sidecar)
+2. click `Code` -> `Download ZIP`
+3. extract the ZIP
+4. open a terminal inside the extracted `webos-sidecar` folder
+
 ## 🧪 Recommended runtime
 
 - Node: `22.x` via `.nvmrc`
@@ -71,36 +94,40 @@ The repo now also works on `Node 25` by injecting a compatibility shim for the L
 ### 🍎 macOS
 
 1. install Python `3.11+` and Node `20-25`
-2. clone the repo
-3. run:
+2. download the repo ZIP or clone it
+3. extract it if needed, then:
 
 ```bash
+cd webos-sidecar
 ./launch.sh
 ```
 
 ### 🐧 Linux
 
 1. install Python `3.11+`, `python3-venv`, Node `20-25`, `npm`, and `git`
-2. clone the repo
-3. run:
+2. download the repo ZIP or clone it
+3. extract it if needed, then:
 
 ```bash
+cd webos-sidecar
 ./launch.sh
 ```
 
 ### 🪟 Windows
 
 1. install Python `3.11+` and Node.js `20-25`
-2. clone the repo
-3. run either:
+2. download the repo ZIP or clone it
+3. extract it if needed, open Command Prompt or PowerShell in the repo folder, then run either:
 
 ```powershell
+cd webos-sidecar
 launch.cmd
 ```
 
 or:
 
 ```powershell
+cd webos-sidecar
 .\launch.ps1
 ```
 
@@ -117,7 +144,8 @@ python launch.py --check
 - `🐍 Python + FastAPI` for the local API and LG CLI wrapper
 - `🧱 HTML + CSS + JavaScript` for the dashboard UI
 - `🟩 Node.js + @webos-tools/cli` for the official LG webOS tooling
-- `📦 shell + PowerShell + CMD` launchers for multi-platform startup
+- `📦 Bash + PowerShell + CMD` launchers for multi-platform startup
+- `🎛️ SVG + CSS animation` for the logo, footer glow, and retro-TV motion styling
 
 ## 🔌 LG TV setup, simplified
 
@@ -170,7 +198,7 @@ Important:
 
 ```mermaid
 flowchart TD
-    A["launch.sh"] --> B["FastAPI backend"]
+    A["launch.py + platform wrappers"] --> B["FastAPI backend"]
     B --> C["LG CLI wrapper"]
     B --> D["GitHub release resolver"]
     B --> E["runtime/artifacts"]
@@ -225,7 +253,7 @@ Verified in this repo:
 Created with love by Sharvinzlife.
 
 - X: [x.com/sharvinzlife](https://x.com/sharvinzlife)
-- Instagram: [instagram.com/sharvininzlife](https://instagram.com/sharvininzlife)
+- Instagram: [instagram.com/sharvinzlife](https://instagram.com/sharvinzlife)
 - Facebook: [fb.com/sharvinzlife](https://fb.com/sharvinzlife)
 - GitHub: [github.com/sharvinzlife](https://github.com/sharvinzlife)
 

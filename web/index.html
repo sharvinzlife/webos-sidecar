@@ -10,9 +10,9 @@
       href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Orbitron:wght@700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="/static/favicon.svg?v=20260322g" type="image/svg+xml" />
-    <link rel="stylesheet" href="/static/styles.css?v=20260322g" />
-    <script defer src="/static/app.js?v=20260322g"></script>
+    <link rel="icon" href="/static/favicon.svg?v=20260322h" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css?v=20260322h" />
+    <script defer src="/static/app.js?v=20260322h"></script>
   </head>
   <body>
     <canvas id="confetti-canvas"></canvas>
@@ -289,25 +289,37 @@
         </article>
 
         <article class="panel">
-          <div class="section-kicker">Why this exists</div>
-          <h2>Minimal commands, maximum clarity, every OS</h2>
+          <div class="section-kicker">Quick launch</div>
+          <h2>Download it, open it, run one command</h2>
           <p>
             The repo is intentionally tiny: Python serves the dashboard, wraps the official LG CLI, and stores your recent packages
-            locally. Pick your platform button, run once, and the same bootstrap path handles the rest. ✨
+            locally. The install path is the same everywhere: grab the repo, extract it or <code>cd</code> into it, then run the
+            launcher for your platform. ✨
           </p>
+          <div class="platform-links">
+            <a class="hero-link compact-link" href="https://github.com/sharvinzlife/webos-sidecar" target="_blank" rel="noreferrer">🌐 Open GitHub</a>
+            <a class="hero-link compact-link" href="https://github.com/sharvinzlife/webos-sidecar/archive/refs/heads/main.zip" target="_blank" rel="noreferrer">⬇️ Download ZIP</a>
+            <a class="hero-link compact-link" href="https://github.com/sharvinzlife/webos-sidecar/releases" target="_blank" rel="noreferrer">🧾 Releases</a>
+          </div>
           <div class="platform-grid">
             <article class="platform-card">
               <strong>macOS 🍎</strong>
+              <span class="platform-step">1. ⬇️ Download ZIP or clone the repo</span>
+              <span class="platform-step">2. 📂 Extract it, then <code>cd webos-sidecar</code></span>
               <code>./launch.sh</code>
               <span>Launch from Terminal with the Unix wrapper.</span>
             </article>
             <article class="platform-card">
               <strong>Linux 🐧</strong>
+              <span class="platform-step">1. ⬇️ Download ZIP or clone the repo</span>
+              <span class="platform-step">2. 📂 Extract it, then <code>cd webos-sidecar</code></span>
               <code>./launch.sh</code>
               <span>Same path as macOS, including the Node shim and dependency checks.</span>
             </article>
             <article class="platform-card">
               <strong>Windows 🪟</strong>
+              <span class="platform-step">1. ⬇️ Download ZIP or clone the repo</span>
+              <span class="platform-step">2. 📂 Extract it, then <code>cd webos-sidecar</code></span>
               <code>launch.cmd</code>
               <span>Run from Command Prompt or double-click it. PowerShell also works with <code>.\launch.ps1</code>.</span>
             </article>
@@ -321,15 +333,24 @@
       </section>
 
       <footer class="panel footer-panel">
-        <div>
-          <div class="section-kicker">Created with love by Sharvinzlife</div>
-          <h2>webOS Sidecar by Sharvinzlife • neon install flow with RGB chaos and TV-launch confetti ✨🌈⚡</h2>
+        <div class="footer-brand">
+          <div class="footer-emblem" aria-hidden="true">
+            <div class="retro-tv-icon">📺</div>
+            <div class="retro-tv-scan">✦ RGB SIGNAL ✦</div>
+          </div>
+          <div class="footer-copy">
+            <div class="section-kicker">Created with love by Sharvinzlife</div>
+            <h2>webOS Sidecar by Sharvinzlife • retro signal footer • subtle RGB glitch • TV-launch confetti ✨📺⚡</h2>
+            <p class="footer-note">
+              Official LG CLI wrapped in a cleaner neon dashboard for Moonfin, Litefin, and any other webOS-ready repo you want to sideload.
+            </p>
+          </div>
         </div>
         <nav class="social-row">
-          <a href="https://x.com/sharvinzlife" target="_blank" rel="noreferrer">x.com/sharvinzlife</a>
-          <a href="https://instagram.com/sharvininzlife" target="_blank" rel="noreferrer">instagram.com/sharvininzlife</a>
-          <a href="https://fb.com/sharvinzlife" target="_blank" rel="noreferrer">fb.com/sharvinzlife</a>
-          <a href="https://github.com/sharvinzlife" target="_blank" rel="noreferrer">github.com/sharvinzlife</a>
+          <a class="social-button" href="https://x.com/sharvinzlife" target="_blank" rel="noreferrer">𝕏 ✦ x.com/sharvinzlife</a>
+          <a class="social-button" href="https://instagram.com/sharvinzlife" target="_blank" rel="noreferrer">📸 instagram.com/sharvinzlife</a>
+          <a class="social-button" href="https://fb.com/sharvinzlife" target="_blank" rel="noreferrer">f ✦ fb.com/sharvinzlife</a>
+          <a class="social-button" href="https://github.com/sharvinzlife" target="_blank" rel="noreferrer">⌘ github.com/sharvinzlife</a>
         </nav>
       </footer>
     </main>

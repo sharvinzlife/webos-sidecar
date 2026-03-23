@@ -177,6 +177,12 @@ body::before {
   flex-wrap: wrap;
 }
 
+.compact-link {
+  min-height: 46px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+}
+
 .hero-link,
 button,
 .download-button {
@@ -548,6 +554,13 @@ select:focus {
   margin-top: 18px;
 }
 
+.platform-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
 .platform-card {
   display: grid;
   gap: 8px;
@@ -559,6 +572,12 @@ select:focus {
 
 .platform-card strong {
   color: var(--text);
+}
+
+.platform-step {
+  color: #dde8ee;
+  font-size: 0.94rem;
+  line-height: 1.45;
 }
 
 .platform-card code {
@@ -648,17 +667,117 @@ select:focus {
 .footer-panel {
   margin-top: 18px;
   display: flex;
-  gap: 18px;
+  gap: 24px;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  background:
+    linear-gradient(120deg, rgba(255, 68, 95, 0.08), transparent 28%),
+    linear-gradient(135deg, rgba(87, 246, 255, 0.08), transparent 62%),
+    rgba(8, 12, 20, 0.92);
 }
 
-.social-row a {
+.footer-panel::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  top: 16px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(87, 246, 255, 0), rgba(87, 246, 255, 0.7), rgba(196, 255, 61, 0.6), rgba(255, 68, 95, 0.7), rgba(255, 68, 95, 0));
+  opacity: 0.8;
+  animation: footerLinePulse 6s ease-in-out infinite;
+}
+
+.footer-brand {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+  min-width: min(100%, 620px);
+}
+
+.footer-copy h2 {
+  margin-bottom: 8px;
+  text-shadow:
+    0 0 0 rgba(255, 255, 255, 0),
+    1px 0 0 rgba(255, 68, 95, 0.18),
+    -1px 0 0 rgba(87, 246, 255, 0.18);
+  animation: footerRgbDrift 8s ease-in-out infinite;
+}
+
+.footer-note {
+  margin: 0;
+  max-width: 680px;
+}
+
+.footer-emblem {
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  width: 132px;
+  min-height: 132px;
+  padding: 18px 14px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(87, 246, 255, 0.08));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 18px 36px rgba(0, 0, 0, 0.25);
+}
+
+.footer-emblem::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 22px;
+  border: 1px solid rgba(87, 246, 255, 0.18);
+  pointer-events: none;
+}
+
+.retro-tv-icon {
+  font-size: 3rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 14px rgba(87, 246, 255, 0.2));
+  animation: footerRgbDrift 7s ease-in-out infinite;
+}
+
+.retro-tv-scan {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.85;
+}
+
+.social-row {
+  position: relative;
+  z-index: 1;
+}
+
+.social-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(87, 246, 255, 0.12), rgba(255, 68, 95, 0.12));
   color: var(--text);
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  padding-bottom: 2px;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.social-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(87, 246, 255, 0.28);
+  background: linear-gradient(135deg, rgba(87, 246, 255, 0.16), rgba(196, 255, 61, 0.12), rgba(255, 68, 95, 0.16));
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(87, 246, 255, 0.08);
 }
 
 .toast {
@@ -812,6 +931,34 @@ select:focus {
   }
 }
 
+@keyframes footerRgbDrift {
+  0%,
+  100% {
+    text-shadow:
+      1px 0 0 rgba(255, 68, 95, 0.18),
+      -1px 0 0 rgba(87, 246, 255, 0.18),
+      0 0 18px rgba(196, 255, 61, 0.05);
+  }
+  50% {
+    text-shadow:
+      2px 0 0 rgba(255, 68, 95, 0.2),
+      -2px 0 0 rgba(87, 246, 255, 0.2),
+      0 0 22px rgba(87, 246, 255, 0.08);
+  }
+}
+
+@keyframes footerLinePulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scaleX(0.98);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scaleX(1);
+  }
+}
+
 @media (max-width: 1180px) {
   .two-up {
     grid-template-columns: 1fr;
@@ -819,6 +966,10 @@ select:focus {
 
   .footer-panel {
     align-items: flex-start;
+  }
+
+  .footer-brand {
+    grid-template-columns: 1fr;
   }
 
   .info-grid {
@@ -841,6 +992,11 @@ select:focus {
   }
 
   .hero-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .platform-links {
+    display: grid;
     grid-template-columns: 1fr;
   }
 }

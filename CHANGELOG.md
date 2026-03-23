@@ -10,11 +10,13 @@ All notable changes to `webOS Sidecar` will be documented here.
 - shared `launch.py` bootstrap so every platform uses the same validation and browser-open flow
 - new `webOS Sidecar` SVG logo and refreshed favicon
 - README badges and emoji-marked quickstart sections for platforms and the stack
+- retro-TV footer styling with subtle RGB/glitch motion and social buttons
 
 ### Changed
 
 - updated the dashboard and README with platform-specific quickstart guidance
 - added a validation-only launcher mode via `python launch.py --check`
+- corrected the Instagram handle to `sharvinzlife` across the dashboard and repo docs
 
 ## v0.2.0 - 2026-03-22
 

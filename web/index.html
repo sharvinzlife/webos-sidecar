@@ -10,9 +10,9 @@
       href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Orbitron:wght@700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="/static/favicon.svg?v=20260322h" type="image/svg+xml" />
-    <link rel="stylesheet" href="/static/styles.css?v=20260322h" />
-    <script defer src="/static/app.js?v=20260322h"></script>
+    <link rel="icon" href="/static/favicon.svg?v=20260322j" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css?v=20260322j" />
+    <script defer src="/static/app.js?v=20260322j"></script>
   </head>
   <body>
     <canvas id="confetti-canvas"></canvas>
@@ -29,7 +29,7 @@
     <main class="shell">
       <section class="panel hero-panel">
         <div class="eyebrow">Official LG CLI wrapper • local-only dashboard • port 9922 magic</div>
-        <img class="hero-logo" src="/static/sidecar-logo.svg?v=20260322g" alt="webOS Sidecar neon logo" />
+        <img class="hero-logo" src="/static/sidecar-logo.svg?v=20260322j" alt="webOS Sidecar neon logo" />
         <h1 class="sr-only">webOS Sidecar</h1>
         <p class="hero-copy">
           One command bootstraps Python + webOS CLI dependencies, opens this dashboard, and walks you from LG Developer Mode to verified
@@ -120,8 +120,39 @@
         </article>
       </section>
 
+      <section class="panel workflow-break">
+        <div class="section-kicker">Workflow split</div>
+        <h2>Prep the TV first. Run the install flow second.</h2>
+        <p class="workflow-copy">
+          The two cards above are the prep zone. Once the TV is in Developer Mode and Key Server is visible, move through the dashboard
+          steps below in order.
+        </p>
+        <div class="workflow-rail">
+          <article class="workflow-node">
+            <span class="workflow-node-tag">STEP 1</span>
+            <strong>Save TV</strong>
+            <span>IP, port <code>9922</code>, user <code>prisoner</code>.</span>
+          </article>
+          <article class="workflow-node">
+            <span class="workflow-node-tag">STEP 2</span>
+            <strong>Link Key Server</strong>
+            <span>Use the 6-character code while it is visible on the TV.</span>
+          </article>
+          <article class="workflow-node">
+            <span class="workflow-node-tag">STEP 3</span>
+            <strong>Pick package source</strong>
+            <span>Resolve GitHub releases or drop a local <code>.ipk</code>.</span>
+          </article>
+          <article class="workflow-node">
+            <span class="workflow-node-tag">STEP 4</span>
+            <strong>Install and verify</strong>
+            <span>Push to TV, confirm install, and optionally launch.</span>
+          </article>
+        </div>
+      </section>
+
       <section class="grid two-up">
-        <article class="panel" id="device-panel">
+        <article class="panel step-panel" id="device-panel">
           <div class="section-kicker">Step 1</div>
           <h2>Save your TV</h2>
           <form id="device-form" class="stack-form">
@@ -154,7 +185,7 @@
           <div id="device-list" class="card-list"></div>
         </article>
 
-        <article class="panel">
+        <article class="panel step-panel">
           <div class="section-kicker">Step 2</div>
           <h2>Grab the SSH key</h2>
           <form id="key-form" class="stack-form">
@@ -179,7 +210,7 @@
       </section>
 
       <section class="grid two-up">
-        <article class="panel">
+        <article class="panel step-panel">
           <div class="section-kicker">Step 3A</div>
           <h2>Resolve a GitHub release</h2>
           <form id="source-form" class="stack-form">
@@ -236,7 +267,7 @@
           <div id="release-results" class="card-list"></div>
         </article>
 
-        <article class="panel" id="upload-panel">
+        <article class="panel step-panel" id="upload-panel">
           <div class="section-kicker">Step 3B</div>
           <h2>Drop a package</h2>
           <form id="upload-form" class="stack-form">
@@ -253,7 +284,7 @@
       </section>
 
       <section class="grid two-up">
-        <article class="panel" id="install-panel">
+        <article class="panel step-panel" id="install-panel">
           <div class="section-kicker">Step 4</div>
           <h2>Install and verify</h2>
           <form id="install-form" class="stack-form">
@@ -274,7 +305,7 @@
           <div id="install-output" class="step-feed"></div>
         </article>
 
-        <article class="panel">
+        <article class="panel step-panel">
           <div class="section-kicker">Troubleshoot fast</div>
           <h2>Same error, same behavior, same fix path</h2>
           <div id="troubleshooting" class="troubleshoot-list"></div>
@@ -340,7 +371,7 @@
           </div>
           <div class="footer-copy">
             <div class="section-kicker">Created with love by Sharvinzlife</div>
-            <h2>webOS Sidecar by Sharvinzlife • retro signal footer • subtle RGB glitch • TV-launch confetti ✨📺⚡</h2>
+            <h2 class="footer-title">webOS Sidecar by Sharvinzlife • retro signal footer • subtle RGB glitch • TV-launch confetti ✨📺⚡</h2>
             <p class="footer-note">
               Official LG CLI wrapped in a cleaner neon dashboard for Moonfin, Litefin, and any other webOS-ready repo you want to sideload.
             </p>
